@@ -1,14 +1,13 @@
 import React from 'react';
+import './Header.css'
 
 const Header = (props) => {
     const button = props.onButtonClick
     return (
-        <div>
-        <button onClick={() => button()}>
-            Click!
-          </button>
+        <div className='div-wrapper-header'>
+            <button> login </button>
+            <button> create user </button>
         </div>
-        
     )
 }
 

@@ -1,0 +1,8 @@
+.div-wrapper-header {
+  height: 50px;
+  background-color: #4831d4;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: -60px;
+  position: fixed;
+}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
 import UserLogin from '../../Components/UserLogin/UserLogin';
+import Header from '../../Components/Header/Header';
+
 import './App.css';
 
 class App extends Component {
@@ -8,7 +11,7 @@ class App extends Component {
     this.state = {
       username: '',
       password: '',
-
+      userLogedIn: false,
     }
   }
 
@@ -26,17 +29,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <UserLogin 
-            createUser={(event) => this.createUser(event)} 
-            handleChange={(event) => this.handleChange(event)} 
-            username={this.username}
-            password={this.password}
-          />
-        </header>
+        <Header />
+        <UserLogin 
+          createUser={(event) => this.createUser(event)} 
+          handleChange={(event) => this.handleChange(event)} 
+          username={this.username}
+          password={this.password}
+        />       
+        <div style={{height: 2000}}></div>
       </div>
     );
   }
 }
 
 export default App;
+
+// two types of uers -> normal user, admin
