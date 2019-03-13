@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-import UserLogin from '../../Components/UserLogin/UserLogin';
+//import UserLogin from '../../Components/UserLogin/UserLogin';
 import Header from '../../Components/Header/Header';
+import Hooks from '../../Components/Hooks';
 
 import './App.css';
+import UserLogin from '../../Components/UserLogin/UserLogin';
 
 class App extends Component {
   constructor() {
@@ -30,12 +32,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <UserLogin 
-          createUser={(event) => this.createUser(event)} 
-          handleChange={(event) => this.handleChange(event)} 
-          username={this.username}
-          password={this.password}
-        />       
+        
+        <UserLogin />
         <div style={{height: 2000}}></div>
       </div>
     );
