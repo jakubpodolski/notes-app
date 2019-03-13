@@ -8,14 +8,14 @@ const UserLogin = (props) => {
     
     const createUser = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
+        console.log(e.target.value, 'tu bedzie php')
     }
-    console.log(username)
+
     return (
         <div className='div-wrapper-userlogin'>
-            <form onSubmit={(event) => createUser(event)}>
-                <input type="text" value={username}  name='username'/>
-                <input type="text" value={password} onChange={(e)=>setPassword(e.target.value)} name='password'/>
+            <form onSubmit={(event) => createUser(event)} className='form-userlogin'>
+                <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} name='username' placeholder='User'/>
+                <input type="text" value={password} onChange={(e)=>setPassword(e.target.value)} name='password' placeholder='Password'/>
                 <input type="submit" value="Stwórz nowego użytkownika" />
             </form>
         </div>
