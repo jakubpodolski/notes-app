@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-//import UserLogin from '../../Components/UserLogin/UserLogin';
-import Header from '../../Components/Header/Header';
+import UserLogin from '../../Components/UserLogin/UserLogin';
+import CreatUser from '../../Components/CreateUser/CreateUser';
 
 import './App.css';
-import UserLogin from '../../Components/UserLogin/UserLogin';
 
 class App extends Component {
   constructor() {
@@ -17,10 +16,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        
         <UserLogin />
-        <div style={{height: 2000}}></div>
+        <CreatUser />
       </div>
     );
   }
