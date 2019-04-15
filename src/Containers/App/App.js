@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import UserLogin from '../../Components/UserLogin/UserLogin';
-import CreateUser from '../../Components/CreateUser/CreateUser';
+import UserForm from '../../Components/UserForm/UserForm';
+//import CreateUser from '../../Components/CreateUser/CreateUser';
 
 import './App.css';
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       loading: false,
-      redirect: false
+      create: false
     }
+  }
+
+  handleCreateClick = () => {
+    this.setState({ create: !this.state.create })
   }
   
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' component={UserLogin} />
-          <Route exact path='/create' component={CreateUser} />
+        <Route
+            exact path='/'
+            render={props => <UserForm {...props}
+                                create={this.state.create}
+                                handleCreateClick={() => this.handleCreateClick()}/>} />
         </Switch>
       </div>
     );
@@ -28,5 +36,3 @@ class App extends Component {
 }
 
 export default App;
-
-// two types of uers -> normal user, admin
