@@ -1,0 +1,53 @@
+.div-wrapper-userLogin {
+    width: 350px;
+    height: 240px;
+    padding: 20px;
+    margin: 150px auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.div-wrapper-userCreate { 
+    width: 350px;
+    height: 300px;
+    padding: 20px;
+    margin: 150px auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.form-userLogin {
+    margin-top: 30px;
+}
+
+.input-userLogin {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-create {
+    border: 0px;
+    background-color: #f2f2f2;
+    color: #1a73e8;
+    font-weight: bold;
+    float: left;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.button-userLogin{
+    float: right;
+    background-color: #1a73e8;
+    border: 2px;
+    border-radius: 5px;
+    width: 88px;
+    height: 36px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}

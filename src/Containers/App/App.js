@@ -1,45 +1,37 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-//import UserLogin from '../../Components/UserLogin/UserLogin';
-import Header from '../../Components/Header/Header';
-import Hooks from '../../Components/Hooks';
+import UserForm from '../../Components/UserForm/UserForm';
 
 import './App.css';
-import UserLogin from '../../Components/UserLogin/UserLogin';
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: '',
-      userLogedIn: false,
+      loading: false,
+      create: false
     }
   }
 
-  createUser = (event) => {
-    event.preventDefault();
-    console.log('tu bedze php')
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value 
-    })
+  handleCreateClick = () => {
+    this.setState({ create: !this.state.create })
   }
   
   render() {
     return (
       <div className="App">
-        <Header />
-        
-        <UserLogin />
-        <div style={{height: 2000}}></div>
+        <Switch>
+          <Route
+              exact path='/'
+              render={props => <UserForm {...props}
+                                  create={this.state.create}
+                                  handleCreateClick={() => this.handleCreateClick()}/>} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
-
-// two types of uers -> normal user, admin
+export default App
