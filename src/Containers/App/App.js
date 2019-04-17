@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import UserForm from '../../Components/UserForm/UserForm';
-//import CreateUser from '../../Components/CreateUser/CreateUser';
 
 import './App.css';
 
@@ -24,15 +23,15 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-        <Route
-            exact path='/'
-            render={props => <UserForm {...props}
-                                create={this.state.create}
-                                handleCreateClick={() => this.handleCreateClick()}/>} />
+          <Route
+              exact path='/'
+              render={props => <UserForm {...props}
+                                  create={this.state.create}
+                                  handleCreateClick={() => this.handleCreateClick()}/>} />
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default App

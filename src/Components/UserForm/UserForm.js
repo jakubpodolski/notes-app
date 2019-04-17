@@ -38,7 +38,7 @@ const UserForm = ({create,handleCreateClick}) => {
                             value={passCheck}
                             onChange={(e)=>setPassCheck(e.target.value)}
                             name='repeate_password'
-                            placeholder='repeate password'
+                            placeholder='Repeat password'
                             /> : null}
                 <div>
                     <input 
