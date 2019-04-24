@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import './UserForm.css'
 
-const UserForm = ({create,handleCreateClick}) => {
+const UserForm = ({create,handleCreateClick, history}) => {
 
-    const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [ username, setUsername ] = useState('test');
+    const [ password, setPassword ] = useState('123qwe');
     const [ passCheck, setPassCheck ] = useState('');
     
 
-    const loginUser = (e) => {
+    const handleForm = (e) => {
         e.preventDefault()
-        // create === true ? creat_user : login_user
-        console.log(username,password, 'Logowanie Usera')
-    }
+        create ? userCreate(username,password,passCheck) : userLogin(username,password)
+    };
+
+    const userLogin = (u,p) => {
+        // fetch data form DataBase, check if password passed is equal to password fetched
+        console.log('Login')
+        return p === '123qwe' ? history.push(`/user/${username}`) : console.log('wrong pass'); 
+    };
+
+    const userCreate = (u,p,pc) => {
+        // create user in DataBase
+        console.log('create')
+    };
+
 
     return (
         <div className={create ? 'div-wrapper-userCreate' : 'div-wrapper-userLogin'}>
             <h2>{create ? 'Create account' : 'Log In'}</h2>
-            <form className='form-userLogin' onSubmit={(event) => loginUser(event)}>
+            <form className='form-userLogin' onSubmit={(event) => handleForm(event)}>
                 <input
                     className='input-userLogin'
                     type='text'

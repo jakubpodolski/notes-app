@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import UserForm from '../../Components/UserForm/UserForm';
+import UserPanel from '../../Components/UserPanel/UserPanel';
 
 import './App.css';
 
@@ -28,6 +29,7 @@ class App extends Component {
               render={props => <UserForm {...props}
                                   create={this.state.create}
                                   handleCreateClick={() => this.handleCreateClick()}/>} />
+          <Route path='/user/:username' component={UserPanel}/>
         </Switch>
       </div>
     );
