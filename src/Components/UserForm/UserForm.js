@@ -20,7 +20,7 @@ const UserForm = ({create,handleCreateClick, history}) => {
     };
 
     const userCreate = (u,p,pc) => {
-        // create user in DataBase
+        // create user in DataBase, done with php
         console.log('create')
     };
 

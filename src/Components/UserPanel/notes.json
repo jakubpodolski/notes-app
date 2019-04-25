@@ -1,0 +1,20 @@
+{
+    "notes": [
+        {
+            "id_note": "1",
+            "title": "Cake, to buy",
+            "content": "Sugar - 1kg, eggs - 12, milk - 3, flour - 1kg", 
+            "id_user": "1",
+            "date": "2019-04-24",
+            "category": "normal"
+        },
+        {
+            "id_note": "2",
+            "title": "Cake, how to make",
+            "content": "Mix all, bake at 230F", 
+            "id_user": "1",
+            "date": "2019-04-25",
+            "category": "normal"
+        }
+    ]
+}
