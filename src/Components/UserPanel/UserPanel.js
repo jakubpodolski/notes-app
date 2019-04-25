@@ -1,18 +1,20 @@
 import React from 'react';
 import data from './notes';
+
+import './UserPanel.css'
+
 import NotesList from '../NotesList/NotesList.js';
 
 const UserPanel = ({match}) => {
-    const user = match.params.username;
-    console.log(user);
-
-    
+    const user = match.params.username;    
     return (
-        <div style={{ backgroundColor: 'red' }}>
-            {`Hello ${match.params.username}`}
-            <div>
+        <div>
+            <div className='user'>
+                {`Hello ${user}`}
+            </div>
+            <div className='notesList'>
                 {data.notes.map((note) => (
-                   <NotesList key={note.id_note} note={note}/>
+                <NotesList key={note.id_note} note={note}/>
                 ))}
             </div>
         </div>

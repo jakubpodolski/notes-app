@@ -1,10 +1,13 @@
 import React from 'react';
 
 
-const NotesList = ({title, date, category}) => {
-    return(
+const NotesList = ({note}) => {
+    const {title, date, category} = note
+    return (
         <div>
-            {title}
+            <h3>{title}</h3>
+            <h6>{date}</h6>
+            {category}
         </div>
     )
 };

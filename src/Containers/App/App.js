@@ -4,8 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import UserForm from '../../Components/UserForm/UserForm';
 import UserPanel from '../../Components/UserPanel/UserPanel';
 
-import './App.css';
-
 
 class App extends Component {
   constructor() {

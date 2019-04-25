@@ -1,0 +1,11 @@
+.notesList {
+    background: violet;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.user {
+    background: red;
+    text-align: center;
+}
