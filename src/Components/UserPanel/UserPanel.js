@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import data from './notes';
 
 import './UserPanel.css'
@@ -8,13 +8,22 @@ import NotesList from '../NotesList/NotesList.js';
 const UserPanel = ({match, history}) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+    const [notes, setNotes] = useState([])
     //const [style, setStyle] = useState('')
+
+    useEffect(()=>{
+
+    })
 
     const handleNoteClick = (id) => {
         // fetch data from database, specific note, by id
         const found = data.notes.find(note=>note.id_note===id)
         setTitle(found.title)
         setContent(found.content)
+    }
+
+    const handleNoteSave = (e) => {
+        e.priventDefault();
     }
 
     const user = match.params.username;    
@@ -43,7 +52,7 @@ const UserPanel = ({match, history}) => {
                         <option value='normal'>Normal</option>
                         <option value='important'>Important</option>
                     </select>
-                    <input type='submit' name='create' />
+                    <input type='submit' name='create' onSubmit={(e) => handleNoteSave(e)}/>
                 </form>
             </div>
         </div>
