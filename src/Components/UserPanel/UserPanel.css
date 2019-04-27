@@ -23,7 +23,6 @@
 }
 
 .note-wrapper {
-    background: salmon;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -32,6 +31,7 @@
 }
 
 .note-form {
+    background: salmon;
     display: flex;
     flex-direction: column;
     justify-content: center;
