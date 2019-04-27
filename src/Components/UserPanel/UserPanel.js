@@ -8,7 +8,7 @@ import NotesList from '../NotesList/NotesList.js';
 const UserPanel = ({match, history}) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [notes, setNotes] = useState([])
+    //const [notes, setNotes] = useState([])
     //const [style, setStyle] = useState('')
 
     useEffect(()=>{
@@ -23,36 +23,37 @@ const UserPanel = ({match, history}) => {
     }
 
     const handleNoteSave = (e) => {
-        e.priventDefault();
+        // send data to database
+        e.preventDefault();
     }
 
     const user = match.params.username;    
     return (
         <div>
             <div className='user'>
-                {`Hello ${user}`}
-                <button onClick={() => history.push('/')}>
-                    Log Out
+                <h1 className='user-name'>{`Hello ${user}`}</h1>
+                <button className='user-logOut' onClick={() => history.push('/')}>
+                    Log out
                 </button>
             </div>
-            <div className='notes-list'>
-                {data.notes.map((note) => (
-                    <NotesList
-                        key={note.id_note}
-                        note={note}
-                        handleNoteClick={handleNoteClick}
-                    />
-                ))}
-            </div>
-            <div className='note-wrapper'>
-                <form>
-                    <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
-                    <input type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
+            <div className='panel'>
+                <div className='notes-list'>
+                    {data.notes.map((note) => (
+                        <NotesList
+                            key={note.id_note}
+                            note={note}
+                            handleNoteClick={handleNoteClick}
+                        />
+                    ))}
+                </div>
+                <form className='note-wrapper' onSubmit={(e) => handleNoteSave(e)}>
+                    <input className='note-input' type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                    <textarea className='note-input' cols="40" rows="5" type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
                     <select>
                         <option value='normal'>Normal</option>
                         <option value='important'>Important</option>
                     </select>
-                    <input type='submit' name='create' onSubmit={(e) => handleNoteSave(e)}/>
+                    <input type='submit' name='create'/>
                 </form>
             </div>
         </div>
