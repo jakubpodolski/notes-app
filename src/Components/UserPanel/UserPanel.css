@@ -19,12 +19,22 @@
     display: flex;
     flex-direction: column;
     width: 200px;
+    
 }
 
 .note-wrapper {
     background: salmon;
     display: flex;
+    flex: 1;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .note-input {

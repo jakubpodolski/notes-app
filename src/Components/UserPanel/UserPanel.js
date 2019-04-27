@@ -46,15 +46,17 @@ const UserPanel = ({match, history}) => {
                         />
                     ))}
                 </div>
-                <form className='note-wrapper' onSubmit={(e) => handleNoteSave(e)}>
-                    <input className='note-input' type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
-                    <textarea className='note-input' cols="40" rows="5" type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
-                    <select>
-                        <option value='normal'>Normal</option>
-                        <option value='important'>Important</option>
-                    </select>
-                    <input type='submit' name='create'/>
-                </form>
+                <div className='note-wrapper'>
+                    <form className='note-form' onSubmit={(e) => handleNoteSave(e)}>
+                        <input className='note-input' type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                        <textarea className='note-input' cols="40" rows="5" type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
+                        <select className='note-input'>
+                            <option value='normal'>Normal</option>
+                            <option value='important'>Important</option>
+                        </select>
+                        <input className='note-input' type='submit' name='create'/>
+                    </form>
+                </div>
             </div>
         </div>
     )
