@@ -1,4 +1,4 @@
-.notesList {
+.notes-list {
     background: violet;
     display: flex;
     flex-direction: column;
@@ -8,4 +8,8 @@
 .user {
     background: red;
     text-align: center;
+}
+
+.note-wrapper {
+    background: salmon;
 }

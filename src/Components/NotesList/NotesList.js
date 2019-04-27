@@ -1,13 +1,14 @@
 import React from 'react';
 
 
-const NotesList = ({note}) => {
-    const {title, date, category} = note
+const NotesList = ({note, handleNoteClick}) => {
+    const {id_note, title, date, category} = note
     return (
-        <div>
-            <h3>{title}</h3>
+        <div className={`${category}`}>
+            <button onClick={() => handleNoteClick(id_note)}>{title}</button>
             <h6>{date}</h6>
-            {category}
+            <button>del</button>
+            <button>edit</button>
         </div>
     )
 };
