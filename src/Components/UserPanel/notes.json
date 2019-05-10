@@ -15,6 +15,30 @@
             "id_user": "1",
             "date": "2019-04-25",
             "category": "normal"
+        },
+        {
+            "id_note": "3",
+            "title": "I WANT TO DIE",
+            "content": "Mix all, bake at 230F", 
+            "id_user": "1",
+            "date": "2019-04-25",
+            "category": "normal"
+        },
+        {
+            "id_note": "4",
+            "title": "VALOREM",
+            "content": "Mix all, bake at 230F", 
+            "id_user": "1",
+            "date": "2019-04-25",
+            "category": "normal"
+        },
+        {
+            "id_note": "5",
+            "title": "LOREM",
+            "content": "Mix all, bake at 230F", 
+            "id_user": "1",
+            "date": "2019-04-25",
+            "category": "normal"
         }
     ]
 }

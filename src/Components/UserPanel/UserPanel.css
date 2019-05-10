@@ -1,40 +1,55 @@
 .user {
     background: #f2f2f2;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
+.user-name {
+    margin: 0px;
+}
+
+
 .user-logOut {
-    align-self: flex-end;
+    border: 0px;
+    background-color: #f2f2f2;
+    color: #1a73e8;
+    font-weight: bold;
+    margin: 10px 0px;
+    cursor: pointer;
 }
 
 .panel {
     display: flex;
+    margin: 15px;
+    height: 365px;
 }
 
 .notes-list {
-    background: violet;
+    background: #f2f2f2;
     display: flex;
     flex-direction: column;
     width: 200px;
-    
+    overflow: auto;
+    border-radius: 4px;
 }
 
 .note-wrapper {
     display: flex;
-    flex: 1;
+    flex-grow: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .note-form {
-    background: salmon;
+    background: #f2f2f2;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 4px;
 }
 
 .note-input {
@@ -42,4 +57,16 @@
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.note-input-submit {
+    height: 30px;
+    width: 400px;
+    margin: 10px;
+    background-color: #1a73e8;
+    border: 2px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
 }

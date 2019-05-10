@@ -12,7 +12,7 @@ const UserPanel = ({match, history}) => {
     //const [style, setStyle] = useState('')
 
     useEffect(()=>{
-
+        //fetch data on first render
     })
 
     const handleNoteClick = (id) => {
@@ -31,10 +31,14 @@ const UserPanel = ({match, history}) => {
     return (
         <div>
             <div className='user'>
-                <h1 className='user-name'>{`Hello ${user}`}</h1>
-                <button className='user-logOut' onClick={() => history.push('/')}>
-                    Log out
-                </button>
+                <div>
+                    <h1 className='user-name'>{`Hello ${user}`}</h1>
+                </div>
+                <div>
+                    <button className='user-logOut' onClick={() => history.push('/')}>
+                        Log out
+                    </button>
+                </div>
             </div>
             <div className='panel'>
                 <div className='notes-list'>
@@ -54,9 +58,10 @@ const UserPanel = ({match, history}) => {
                             <option value='normal'>Normal</option>
                             <option value='important'>Important</option>
                         </select>
-                        <input className='note-input' type='submit' name='create'/>
+                        <input className='note-input-submit' type='submit' name='create'/>
                     </form>
                 </div>
+                <div style={{ width:'200px' }}/>
             </div>
         </div>
     )
