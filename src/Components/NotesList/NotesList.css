@@ -1,4 +1,49 @@
-.notes-list-wrapper{
+.notes-list-wrapper {
     margin: 5px;
     border-radius: 4px;
 }
+
+.note-list-button {
+    border: none;
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+.note-list-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.note-list-title {
+    margin: 0;
+}
+
+.note-list-date {
+    margin: 0;
+    margin-left: 15px;
+    padding: 6px;
+    font: 12px sans-serif;
+}
+
+.del {
+    float: right;
+}
+
+.del:hover {
+    font-weight: bold;
+    text-decoration: none;
+    color: red;
+}
+
+.category {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: none;
+}
+
+.normal { background: #f2f2f2}
+.imporant { background:  #F08080 }
+.private { background:  #1E90FF}
+.life { background:  #32CD32 }
+.work { background:  #696969}

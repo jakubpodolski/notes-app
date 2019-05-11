@@ -23,15 +23,19 @@ const UserPanel = ({match, history}) => {
         setContent(found.content)
     }
 
+    const handleNoteDel = (id) => {
+        console.log('PURGE THE UNCLEAN', id)
+    }
+
     const handleNoteSave = (e) => {
+        e.preventDefault();
         // send data to database
         validator()
-        e.preventDefault();
     }
 
     const validator = () => {
         console.log('t',title.length,'c', content.length)
-        console.log((title.length>25||content.length>250))
+        setDisable(title.length>25||content.length>250)
     }
 
     const user = match.params.username;    
@@ -54,18 +58,20 @@ const UserPanel = ({match, history}) => {
                             key={note.id_note}
                             note={note}
                             handleNoteClick={handleNoteClick}
+                            handleNoteDel={handleNoteDel}
                         />
                     ))}
                 </div>
                 <div className='note-wrapper'>
-                    <form className='note-form' onSubmit={(e) => handleNoteSave(e)}>
-                        <input className='note-input' type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
-                        <textarea className='note-input' cols="40" rows="5" type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
+                    <form className='note-form' onSubmit={(e) => handleNoteSave(e)} autocomplete="off">
+                        <input className={`note-input ${title.length>25}`} type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                        <textarea className={`note-input ${content.length>250}`} cols="40" rows="5" type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
                         <select className='note-input'>
                             <option value='normal'>Normal</option>
                             <option value='important'>Important</option>
                         </select>
-                        <input className='note-input-submit' type='submit' name='create'/>
+                        <input className={`note-input-submit`} type='submit' name='create' disabled={disable}/>
+                        
                     </form>
                 </div>
                 <div style={{ width:'200px' }}/>

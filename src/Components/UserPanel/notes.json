@@ -13,31 +13,49 @@
             "title": "Cake, how to make",
             "content": "Mix all, bake at 230F", 
             "id_user": "1",
-            "date": "2019-04-25",
-            "category": "normal"
+            "date": "2019-04-28",
+            "category": "imporant"
         },
         {
             "id_note": "3",
             "title": "I WANT TO DIE",
             "content": "Mix all, bake at 230F", 
             "id_user": "1",
-            "date": "2019-04-25",
-            "category": "normal"
+            "date": "2019-04-30",
+            "category": "private"
         },
         {
             "id_note": "4",
             "title": "VALOREM",
             "content": "Mix all, bake at 230F", 
             "id_user": "1",
-            "date": "2019-04-25",
-            "category": "normal"
+            "date": "2019-04-1",
+            "category": "life"
         },
         {
             "id_note": "5",
             "title": "LOREM",
             "content": "Mix all, bake at 230F", 
             "id_user": "1",
-            "date": "2019-04-25",
+            "date": "2019-04-2",
+            "category": "work"
+        }
+        ,
+        {
+            "id_note": "6",
+            "title": "LOREM",
+            "content": "Mix all, bake at 230F", 
+            "id_user": "1",
+            "date": "2019-04-2",
+            "category": "normal"
+        }
+        ,
+        {
+            "id_note": "7",
+            "title": "xDDD",
+            "content": "Mix all, bake at 230F", 
+            "id_user": "1",
+            "date": "2019-04-2",
             "category": "normal"
         }
     ]
