@@ -10,6 +10,7 @@ const UserPanel = ({match, history}) => {
     const [content, setContent] = useState('')
     //const [notes, setNotes] = useState([])
     //const [style, setStyle] = useState('')
+    const [disable, setDisable] = useState(false)
 
     useEffect(()=>{
         //fetch data on first render
@@ -24,7 +25,13 @@ const UserPanel = ({match, history}) => {
 
     const handleNoteSave = (e) => {
         // send data to database
+        validator()
         e.preventDefault();
+    }
+
+    const validator = () => {
+        console.log('t',title.length,'c', content.length)
+        console.log((title.length>25||content.length>250))
     }
 
     const user = match.params.username;    
