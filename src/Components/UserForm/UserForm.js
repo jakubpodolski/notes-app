@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { apiUrl, userPost } from '../../Helper';
 import './UserForm.css'
 
@@ -53,7 +54,7 @@ const UserForm = ({create, handleStatusClick, history}) => {
                             placeholder='Repeat password'
                             onBlur={() => setDisable(password !== passCheck)}
                             /> : null}
-                {disable ? <p className='disable'>Passwords do not match</p> : null    }
+                {disable ? <p className='disable'>Passwords do not match</p> : null}
                 <div>
                     <input 
                         className='button-userLogin'
@@ -76,3 +77,11 @@ const UserForm = ({create, handleStatusClick, history}) => {
 }
 
 export default UserForm
+
+UserForm.propTypes = { 
+    create: PropTypes.bool.isRequired,
+    handleStatusClick: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+      }).isRequired,
+}

@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import PropTypes from 'prop-types';
 import data from './notes';
 
 import './UserPanel.css'
@@ -19,6 +20,7 @@ const UserPanel = ({ match, history }) => {
 
     const handleNoteClick = (id) => {
         // fetch data from database, specific note, by id
+        console.log(id)
         const found = data.notes.find(note=>note.id_note===id)
         setTitle(found.title)
         setContent(found.content)
@@ -95,3 +97,14 @@ const UserPanel = ({ match, history }) => {
 }
 
 export default UserPanel;
+
+UserPanel.propTypes = { 
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            username: PropTypes.string.isRequired
+        })
+    }),
+}
