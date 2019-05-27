@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
     apiNoteURL,
     apiUserURL,
+    apiCategoriesURL
 } from '../../Helper'
 import NotesList from '../NotesList/NotesList.js'
 import Categories from '../Categories/Categories'
@@ -10,9 +11,10 @@ import Categories from '../Categories/Categories'
 import './UserPanel.css'
 
 const UserPanel = ({ match, history }) => {
-    const [title, setTitle] = useState(' ')
-    const [content, setContent] = useState(' ')
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('')
     const [notes, setNotes] = useState([])
+    const [style, setStyle] = useState([])
     const [disableTitle, setDisableTitle] = useState(false)
     const [disableContent, setDisableContent] = useState(false)
     const [id, setID] = useState(null)
@@ -27,8 +29,11 @@ const UserPanel = ({ match, history }) => {
                             setID(res.id_uzytkownika)
                             return fetch(noteURL+res.id_uzytkownika)
                         })
-                        .then(res => res.json())
-                        .then(res => setNotes(res))
+                            .then(res => res.json())
+                            .then(res => setNotes(res ))
+                            .then(() => fetch(apiCategoriesURL))
+                                .then(res => res.json()).then(res => setStyle(res))
+        console.log('DUPA!')
     }, [])
 
     const handleNoteClick = (id) => {
@@ -43,7 +48,7 @@ const UserPanel = ({ match, history }) => {
 
     const handleNoteSave = (e) => {
         e.preventDefault();
-        // send data to database
+        console.log(e.target)
     }
 
     return (
@@ -60,14 +65,15 @@ const UserPanel = ({ match, history }) => {
             </div>
             <div className='panel'>
                 <div className='notes-list'>
-                        {notes.map((note) => (
-                            <NotesList
-                                key={note.id_notatki}
-                                note={note}
-                                handleNoteClick={handleNoteClick}
-                                handleNoteDel={handleNoteDel}
-                            />
-                        ))}
+                {console.log(notes, 'cipa')}
+                    {notes ? notes.map((note) => (
+                        <NotesList
+                            key={note.id_notatki}
+                            note={note}
+                            handleNoteClick={handleNoteClick}
+                            handleNoteDel={handleNoteDel}
+                        />
+                    )) : <p>Your notes</p>}
                 </div>
                 <div className='note-wrapper'>
                     <form className='note-form' onSubmit={(e) => handleNoteSave(e)} autoComplete="off">
@@ -88,13 +94,15 @@ const UserPanel = ({ match, history }) => {
                             onBlur={() => setDisableContent(content.length>250)}
                         />
                         {disableContent ? <p className='disable'>Content should have less than 250 charcters</p> : null}
-                        <Categories />
+                        <Categories style={style}/>
                         <input
                             className={`note-input-submit`}
                             type='submit'
                             name='create'
                             disabled={disableTitle||disableContent}/>
-                        
+                        <button className='user-logOut' onClick={() => {setTitle(''); setContent('')}}>
+                            New note
+                        </button>
                     </form>
                 </div>
                 <div style={{ width:'300px' }}/>

@@ -1,14 +1,14 @@
 import React from 'react'
 
-import {apiCategoriesURL} from '../../Helper';
+import './Categories.css'
 
-const Categories = () => {
-    const style = Promise.all(fetch(apiCategoriesURL).then(res => res.json()).then(res => res))
-    console.log(style)
+const Categories = ({ style }) => {
     return (
     <select className='note-input'>
         {style.map((sty, id) => (
-            console.log(id, sty.kategoria)
+            <option key={id} value={sty.kategoria}>
+                {sty.kategoria}
+            </option>
         ))}
     </select>
     )
