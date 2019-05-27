@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import {
     apiNoteURL,
     apiUserURL,
-    apiCategoriesURL
+    apiCategoriesURL,
+    noteUpdate,
+    noteSave,
+    noteDelete
 } from '../../Helper'
 import NotesList from '../NotesList/NotesList.js'
 import Categories from '../Categories/Categories'
@@ -15,9 +18,11 @@ const UserPanel = ({ match, history }) => {
     const [content, setContent] = useState('')
     const [notes, setNotes] = useState([])
     const [style, setStyle] = useState([])
+    const [selectedStyle, setSelectedStyle] = useState('normal')
     const [disableTitle, setDisableTitle] = useState(false)
     const [disableContent, setDisableContent] = useState(false)
-    const [id, setID] = useState(null)
+    const [noteID, setNoteID] = useState(0);
+    const [userID, setUserID] = useState(null)
     const user = match.params.username;
     
     useEffect(()=>{
@@ -26,7 +31,7 @@ const UserPanel = ({ match, history }) => {
 
         fetch(userURL).then(res => res.json())
                         .then(res => {
-                            setID(res.id_uzytkownika)
+                            setUserID(res.id_uzytkownika)
                             return fetch(noteURL+res.id_uzytkownika)
                         })
                             .then(res => res.json())
@@ -40,17 +45,23 @@ const UserPanel = ({ match, history }) => {
         const found = notes.find(note=>note.id_notatki===id)
         setTitle(found.tytul_notatki)
         setContent(found.tresc_notatki)
+        setNoteID(id)
+        setSelectedStyle(found.kategoria)
     }
 
     const handleNoteDel = (id) => {
-        console.log('PURGE THE UNCLEAN', id)
+        fetch(apiNoteURL+'delete.php', noteDelete(noteID))
     }
 
     const handleNoteSave = (e) => {
         e.preventDefault();
-        console.log(e.target)
+        if (notes.find(note=>note.id_notatki===noteID)) {
+            fetch(apiNoteURL+'update.php', noteUpdate(noteID, userID, content, title, selectedStyle))
+        } else {
+            fetch(apiNoteURL+'create.php', noteSave(userID, content, title, selectedStyle))
+        }
     }
-
+    
     return (
         <div>
             <div className='user'>
@@ -65,7 +76,6 @@ const UserPanel = ({ match, history }) => {
             </div>
             <div className='panel'>
                 <div className='notes-list'>
-                {console.log(notes, 'cipa')}
                     {notes ? notes.map((note) => (
                         <NotesList
                             key={note.id_notatki}
@@ -94,16 +104,16 @@ const UserPanel = ({ match, history }) => {
                             onBlur={() => setDisableContent(content.length>250)}
                         />
                         {disableContent ? <p className='disable'>Content should have less than 250 charcters</p> : null}
-                        <Categories style={style}/>
+                        <Categories style={style} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle}/>
                         <input
                             className={`note-input-submit`}
                             type='submit'
                             name='create'
                             disabled={disableTitle||disableContent}/>
-                        <button className='user-logOut' onClick={() => {setTitle(''); setContent('')}}>
-                            New note
-                        </button>
                     </form>
+                    <button className='user-logOut' onClick={() => {setTitle(''); setContent(''); setNoteID(0)}}>
+                        New note
+                    </button>
                 </div>
                 <div style={{ width:'300px' }}/>
             </div>

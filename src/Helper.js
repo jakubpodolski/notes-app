@@ -5,6 +5,7 @@ const apiCategoriesURL = 'http://v-ie.uek.krakow.pl/~s206966/app/api/categories/
 const userPost = (user,password) => ({
     method: 'POST',
     header: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -25,9 +26,45 @@ const userGet = (user,password) => ({
     })
 })
 
-const noteGet = (user) => {}
-const noteSave = (note) => {}
-const noteDelete = (id) => {}
+const noteUpdate = (noteID,userID,content,title,style) => ({
+    method: 'PUT',
+    header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        id_notatki: noteID,
+        tytul_notatki: title,
+        tresc_notatki: content,
+        kategoria: style,
+        id_uzytkownika: userID,
+    })
+})
+
+const noteSave = (userID,content,title,style) => ({
+    method: 'POST',
+    header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        tytul_notatki: title,
+        tresc_notatki: content,
+        kategoria: style,
+        id_uzytkownika: userID,
+    })
+})
+
+const noteDelete = (id) => ({
+    method: 'DELETE',
+    header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        id_notatki: id
+    })
+})
 
 export {
     apiUserURL,
@@ -35,7 +72,7 @@ export {
     apiCategoriesURL,
     userPost,
     userGet,
-    noteGet,
+    noteUpdate,
     noteSave,
     noteDelete,
 }
