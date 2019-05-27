@@ -1,29 +1,43 @@
 import React, { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
-import data from './notes';
+import {
+    apiNoteURL,
+    apiUserURL,
+    apiCategoriesURL
+} from '../../Helper'
 
 import './UserPanel.css'
 
 import NotesList from '../NotesList/NotesList.js';
 
 const UserPanel = ({ match, history }) => {
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    //const [notes, setNotes] = useState([])
-    //const [style, setStyle] = useState('')
+    const [title, setTitle] = useState(' ')
+    const [content, setContent] = useState(' ')
+    const [notes, setNotes] = useState([])
+    const [style, setStyle] = useState([])
     const [disableTitle, setDisableTitle] = useState(false)
     const [disableContent, setDisableContent] = useState(false)
-
+    const [id, setID] = useState(null)
+    const user = match.params.username;
+    
     useEffect(()=>{
-        //fetch data on first render
-    })
+        const userURL = apiUserURL + `read_user.php?nazwa_uzytkownika=${user}`
+        const noteURL = apiNoteURL + 'read_user.php?id='
+        fetch(apiCategoriesURL)
+            .then(res => res.json()).then(res => setStyle(res))
+        fetch(userURL).then(res => res.json())
+                        .then(res => {
+                            setID(res.id_uzytkownika)
+                            return fetch(noteURL+res.id_uzytkownika)
+                        })
+                        .then(res => res.json())
+                        .then(res => setNotes(res))
+    }, [])
 
     const handleNoteClick = (id) => {
-        // fetch data from database, specific note, by id
-        console.log(id)
-        const found = data.notes.find(note=>note.id_note===id)
-        setTitle(found.title)
-        setContent(found.content)
+        const found = notes.find(note=>note.id_notatki===id)
+        setTitle(found.tytul_notatki)
+        setContent(found.tresc_notatki)
     }
 
     const handleNoteDel = (id) => {
@@ -35,7 +49,6 @@ const UserPanel = ({ match, history }) => {
         // send data to database
     }
 
-    const user = match.params.username;
     return (
         <div>
             <div className='user'>
@@ -50,18 +63,18 @@ const UserPanel = ({ match, history }) => {
             </div>
             <div className='panel'>
                 <div className='notes-list'>
-                    {data.notes.map((note) => (
-                        <NotesList
-                            key={note.id_note}
-                            note={note}
-                            handleNoteClick={handleNoteClick}
-                            handleNoteDel={handleNoteDel}
-                        />
-                    ))}
+                        {notes.map((note) => (
+                            <NotesList
+                                key={note.id_notatki}
+                                note={note}
+                                handleNoteClick={handleNoteClick}
+                                handleNoteDel={handleNoteDel}
+                            />
+                        ))}
                 </div>
                 <div className='note-wrapper'>
                     <form className='note-form' onSubmit={(e) => handleNoteSave(e)} autoComplete="off">
-                        <input 
+                        <input
                             className={`note-input ${disableTitle}`}
                             type='text' name='title'
                             value={title}
@@ -79,8 +92,9 @@ const UserPanel = ({ match, history }) => {
                         />
                         {disableContent ? <p className='disable'>Content should have less than 250 charcters</p> : null}
                         <select className='note-input'>
-                            <option value='normal'>Normal</option>
-                            <option value='important'>Important</option>
+                            {style.map((sty, id) => (
+                                console.log(id, sty.kategoria)
+                            ))}
                         </select>
                         <input
                             className={`note-input-submit`}

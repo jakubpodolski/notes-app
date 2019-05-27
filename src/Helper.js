@@ -1,9 +1,10 @@
-const apiUrl = 'http://v-ie.uek.krakow.pl/~s206966/app/api/user/create.php';
+const apiUserURL = 'http://v-ie.uek.krakow.pl/~s206966/app/api/user/'
+const apiNoteURL = 'http://v-ie.uek.krakow.pl/~s206966/app/api/note/'
+const apiCategoriesURL = 'http://v-ie.uek.krakow.pl/~s206966/app/api/categories/all_categories.php'
 
 const userPost = (user,password) => ({
     method: 'POST',
     header: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -29,7 +30,9 @@ const noteSave = (note) => {}
 const noteDelete = (id) => {}
 
 export {
-    apiUrl,
+    apiUserURL,
+    apiNoteURL,
+    apiCategoriesURL,
     userPost,
     userGet,
     noteGet,

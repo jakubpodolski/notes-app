@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { apiUrl, userPost } from '../../Helper';
+import md5 from 'js-md5';
+import { apiUserURL, userPost } from '../../Helper';
 import './UserForm.css'
 
 const UserForm = ({create, handleStatusClick, history}) => {
 
-    const [username, setUsername] = useState('test');
-    const [password, setPassword] = useState('dupa');
-    const [passCheck, setPassCheck] = useState('dupa');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [passCheck, setPassCheck] = useState('123qwe');
     const [disable, setDisable] = useState(false)
 
     const handleForm = (e) => {
@@ -15,15 +16,19 @@ const UserForm = ({create, handleStatusClick, history}) => {
         create ? userCreate(username,password,passCheck) : userLogin(username,password)
     };
 
-    const userLogin = (u,p) => {
-        // fetch data form DataBase, check if password passed is equal to password fetched
-        console.log('Login')
-        return p === '123qwe' ? history.push(`/user/${username}`) : console.log('wrong pass'); 
+    const userLogin = (user) => {
+        const url = apiUserURL + `get_passwd.php?nazwa_uzytkownika=${user}`
+        const pass = md5(password);
+        fetch(url)
+            .then(res => res.json())
+            .then(res => {
+                res.password === pass ? history.push(`/user/${username}`) : console.log('wrong pass') // wrong pass ? pop up
+            })
     };
 
     const userCreate = (user,pass) => {        
-        fetch(apiUrl, userPost(user,pass))
-            .then(res => console.log(res)) // create response
+        fetch((apiUserURL+'create.php'), userPost(user,pass))
+            .then(res => console.log(res.status)) // 200 ? pop up create success
     };
 
 
