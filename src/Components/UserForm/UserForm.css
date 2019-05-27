@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.button-userLogin{
+.button-userLogin {
     float: right;
     background-color: #1a73e8;
     border: 2px;
@@ -50,4 +50,20 @@
     font-weight: 600;
     color: #fff;
     cursor: pointer;
+}
+
+.button-userLogin:disabled {
+    background-color: #C0C0C0;
+    cursor: not-allowed;
+}
+
+.true {
+    border-color: red;
+}
+
+.disable {
+    font-size: 10px;
+    margin: 0px 10px;
+    text-align: center;
+    color: red;
 }

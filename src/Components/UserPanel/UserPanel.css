@@ -23,14 +23,14 @@
 .panel {
     display: flex;
     margin: 15px;
-    height: 340px;
+    height: 300px;
 }
 
 .notes-list {
     background: #f2f2f2;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 300px;
     overflow: auto;
     border-radius: 4px;
 }
@@ -81,4 +81,11 @@
 
 .true {
     border-color: red;    
+}
+
+.disable {
+    font-size: 10px;
+    margin: 0px 10px;
+    text-align: center;
+    color: red;
 }

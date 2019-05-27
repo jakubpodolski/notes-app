@@ -10,7 +10,8 @@ const UserPanel = ({match, history}) => {
     const [content, setContent] = useState('')
     //const [notes, setNotes] = useState([])
     //const [style, setStyle] = useState('')
-    const [disable, setDisable] = useState(false)
+    const [disableTitle, setDisableTitle] = useState(false)
+    const [disableContent, setDisableContent] = useState(false)
 
     useEffect(()=>{
         //fetch data on first render
@@ -30,12 +31,6 @@ const UserPanel = ({match, history}) => {
     const handleNoteSave = (e) => {
         e.preventDefault();
         // send data to database
-        validator()
-    }
-
-    const validator = () => {
-        console.log('t',title.length,'c', content.length)
-        setDisable(title.length>25||content.length>250)
     }
 
     const user = match.params.username;    
@@ -63,18 +58,37 @@ const UserPanel = ({match, history}) => {
                     ))}
                 </div>
                 <div className='note-wrapper'>
-                    <form className='note-form' onSubmit={(e) => handleNoteSave(e)} autocomplete="off">
-                        <input className={`note-input ${title.length>25}`} type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
-                        <textarea className={`note-input ${content.length>250}`} cols="40" rows="5" type='text' name='content' value={content} onChange={(e) => setContent(e.target.value)}/>
+                    <form className='note-form' onSubmit={(e) => handleNoteSave(e)} autoComplete="off">
+                        <input 
+                            className={`note-input ${disableTitle}`}
+                            type='text' name='title'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            onBlur={() => setDisableTitle(title.length>25)}
+                        />
+                        {disableTitle ? <p className='disable'>Title should have less than 25 charcters</p> : null}
+                        <textarea
+                            className={`note-input ${disableContent}`}
+                            cols="40" rows="5" type='text'
+                            name='content'
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                            onBlur={() => setDisableContent(content.length>250)}
+                        />
+                        {disableContent ? <p className='disable'>Content should have less than 250 charcters</p> : null}
                         <select className='note-input'>
                             <option value='normal'>Normal</option>
                             <option value='important'>Important</option>
                         </select>
-                        <input className={`note-input-submit`} type='submit' name='create' disabled={disable}/>
+                        <input
+                            className={`note-input-submit`}
+                            type='submit'
+                            name='create'
+                            disabled={disableTitle||disableContent}/>
                         
                     </form>
                 </div>
-                <div style={{ width:'200px' }}/>
+                <div style={{ width:'300px' }}/>
             </div>
         </div>
     )

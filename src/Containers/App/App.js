@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
 
-  handleCreateClick = () => {
+  handleStatusClick = () => {
     this.setState({ create: !this.state.create })
   }
   
@@ -26,7 +26,7 @@ class App extends Component {
               exact path='/'
               render={props => <UserForm {...props}
                                   create={this.state.create}
-                                  handleCreateClick={() => this.handleCreateClick()}/>} />
+                                  handleStatusClick={() => this.handleStatusClick()}/>} />
           <Route path='/user/:username' component={UserPanel}/>
         </Switch>
       </div>

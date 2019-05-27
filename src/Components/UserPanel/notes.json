@@ -10,8 +10,8 @@
         },
         {
             "id_note": "2",
-            "title": "Cake, how to make",
-            "content": "Mix all, bake at 230F", 
+            "title": "25 long character title !",
+            "content": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of hu", 
             "id_user": "1",
             "date": "2019-04-28",
             "category": "imporant"
@@ -19,7 +19,7 @@
         {
             "id_note": "3",
             "title": "I WANT TO DIE",
-            "content": "Mix all, bake at 230F", 
+            "content": "jk :P", 
             "id_user": "1",
             "date": "2019-04-30",
             "category": "private"
