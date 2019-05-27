@@ -8,7 +8,7 @@ const UserForm = ({create, handleStatusClick, history}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [passCheck, setPassCheck] = useState('123qwe');
+    const [passCheck, setPassCheck] = useState('');
     const [disable, setDisable] = useState(false)
 
     const handleForm = (e) => {
@@ -28,7 +28,7 @@ const UserForm = ({create, handleStatusClick, history}) => {
 
     const userCreate = (user,pass) => {        
         fetch((apiUserURL+'create.php'), userPost(user,pass))
-            .then(res => console.log(res.status)) // 200 ? pop up create success
+            .then(res => res.status)
     };
 
 
