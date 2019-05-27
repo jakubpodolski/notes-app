@@ -50,15 +50,15 @@ const UserPanel = ({ match, history }) => {
     }
 
     const handleNoteDel = (id) => {
-        fetch(apiNoteURL+'delete.php', noteDelete(noteID))
+        fetch(apiNoteURL+'delete.php', noteDelete(id)).then(() => window.location.reload())
     }
 
     const handleNoteSave = (e) => {
         e.preventDefault();
         if (notes.find(note=>note.id_notatki===noteID)) {
-            fetch(apiNoteURL+'update.php', noteUpdate(noteID, userID, content, title, selectedStyle))
+            fetch(apiNoteURL+'update.php', noteUpdate(noteID, userID, content, title, selectedStyle)).then(() => window.location.reload())
         } else {
-            fetch(apiNoteURL+'create.php', noteSave(userID, content, title, selectedStyle))
+            fetch(apiNoteURL+'create.php', noteSave(userID, content, title, selectedStyle)).then(() => window.location.reload())
         }
     }
     
