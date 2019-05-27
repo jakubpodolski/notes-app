@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import {
     apiNoteURL,
     apiUserURL,
-    apiCategoriesURL
 } from '../../Helper'
+import NotesList from '../NotesList/NotesList.js'
+import Categories from '../Categories/Categories'
 
 import './UserPanel.css'
-
-import NotesList from '../NotesList/NotesList.js';
 
 const UserPanel = ({ match, history }) => {
     const [title, setTitle] = useState(' ')
     const [content, setContent] = useState(' ')
     const [notes, setNotes] = useState([])
-    const [style, setStyle] = useState([])
     const [disableTitle, setDisableTitle] = useState(false)
     const [disableContent, setDisableContent] = useState(false)
     const [id, setID] = useState(null)
@@ -23,8 +21,7 @@ const UserPanel = ({ match, history }) => {
     useEffect(()=>{
         const userURL = apiUserURL + `read_user.php?nazwa_uzytkownika=${user}`
         const noteURL = apiNoteURL + 'read_user.php?id='
-        fetch(apiCategoriesURL)
-            .then(res => res.json()).then(res => setStyle(res))
+
         fetch(userURL).then(res => res.json())
                         .then(res => {
                             setID(res.id_uzytkownika)
@@ -91,11 +88,7 @@ const UserPanel = ({ match, history }) => {
                             onBlur={() => setDisableContent(content.length>250)}
                         />
                         {disableContent ? <p className='disable'>Content should have less than 250 charcters</p> : null}
-                        <select className='note-input'>
-                            {style.map((sty, id) => (
-                                console.log(id, sty.kategoria)
-                            ))}
-                        </select>
+                        <Categories />
                         <input
                             className={`note-input-submit`}
                             type='submit'
