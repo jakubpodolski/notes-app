@@ -5,7 +5,7 @@ import './UserPanel.css'
 
 import NotesList from '../NotesList/NotesList.js';
 
-const UserPanel = ({match, history}) => {
+const UserPanel = ({ match, history }) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     //const [notes, setNotes] = useState([])
@@ -33,7 +33,7 @@ const UserPanel = ({match, history}) => {
         // send data to database
     }
 
-    const user = match.params.username;    
+    const user = match.params.username;
     return (
         <div>
             <div className='user'>

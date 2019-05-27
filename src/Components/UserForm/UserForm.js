@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../../Helper';
+import { apiUrl, userPost } from '../../Helper';
 import './UserForm.css'
 
 const UserForm = ({create, handleStatusClick, history}) => {
@@ -20,21 +20,9 @@ const UserForm = ({create, handleStatusClick, history}) => {
         return p === '123qwe' ? history.push(`/user/${username}`) : console.log('wrong pass'); 
     };
 
-    const userCreate = (u,p,pc) => {
-        console.log('create')
-        const user = {
-            method: 'POST',
-            header: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                nazwa_uzytkownika: u,
-                password: p,
-            })
-        }
-        fetch(api, user)
-            .then(res => console.log(res))
+    const userCreate = (user,pass) => {        
+        fetch(apiUrl, userPost(user,pass))
+            .then(res => console.log(res)) // create response
     };
 
 
