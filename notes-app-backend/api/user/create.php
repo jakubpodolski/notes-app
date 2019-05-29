@@ -4,8 +4,8 @@
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST');
 
-    include_once '../../config/Database.php';
-    include_once '../../models/User.php';
+    include '../../config/Database.php';
+    include '../../models/User.php';
 
     // Instantiate DB & connect
     $database = new Database();

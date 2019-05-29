@@ -62,13 +62,6 @@
                         // Prepare statement
                         $stmt = $this->conn->prepare($query);
 
-                        // Clean data
-                        //$this->tytul_notatki = htmlspecialchars(strip_tags($this->tytul_notatki));
-                        //$this->tresc_notatki = htmlspecialchars(strip_tags($this->tresc_notatki));
-                        //$this->id_uzytkownika = htmlspecialchars(strip_tags($this->id_uzytkownika));
-                        //$this->kategoria = htmlspecialchars(strip_tags($this->kategoria));
-
-
                         // Bind data
                         $stmt->bindParam(':tytul_notatki', $this->tytul_notatki);
                         $stmt->bindParam(':tresc_notatki', $this->tresc_notatki);
@@ -97,20 +90,12 @@
                     // Prepare statement
                     $stmt = $this->conn->prepare($query);
 
-                    // Clean data
-                    //$this->tytul_notatki = htmlspecialchars(strip_tags($this->tytul_notatki));
-                    //$this->tresc_notatki = htmlspecialchars(strip_tags($this->tresc_notatki));
-                    //$this->id_uzytkownika = htmlspecialchars(strip_tags($this->id_uzytkownika));
-                    //$this->kategoria = htmlspecialchars(strip_tags($this->kategoria));
-
-
                     // Bind data
                     $stmt->bindParam(':tytul_notatki', $this->tytul_notatki);
                     $stmt->bindParam(':tresc_notatki', $this->tresc_notatki);
                     $stmt->bindParam(':id_uzytkownika', $this->id_uzytkownika);
                     $stmt->bindParam(':kategoria', $this->kategoria);
                     $stmt->bindParam(':id_notatki', $this->id_notatki);
-
 
                     // Execute query
                     if($stmt->execute()) { 
@@ -127,8 +112,6 @@
 
                 $stmt = $this->conn->prepare($query);
 
-                //$this->id_notatki = htmlspecialchars(strip_tags($this->id_notatki));
-                
                 $stmt->bindParam(':id_notatki', $this->id_notatki);
 
                 // Execute query

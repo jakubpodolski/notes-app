@@ -3,7 +3,6 @@
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: DELETE');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
     include_once '../../config/Database.php';
     include_once '../../models/Note.php';
@@ -13,21 +12,21 @@
     $db = $database->connect();
 
     // Instantiate blog post object
-    $post = new Note($db);
+    $note = new Note($db);
     // Get raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     // Set ID to update
-    $post->id_notatki = $data->id_notatki;
+    $note->id_notatki = $data->id_notatki;
 
-    // Delete post
-    if($post->delete()) {
+    // Delete note
+    if($note->delete()) {
     echo json_encode(
-            array('message' => 'Post Deleted')
+            array('message' => 'note Deleted')
     );
     } else {
             echo json_encode(
-                    array('message' => 'Post Not Deleted')
+                    array('message' => 'note Not Deleted')
             );
     }
 ?>

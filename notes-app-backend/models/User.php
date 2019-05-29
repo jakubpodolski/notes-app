@@ -61,8 +61,6 @@
         
                         $stmt = $this->conn->prepare($query);
         
-                        //$this->id_notatki = htmlspecialchars(strip_tags($this->id_notatki));
-                        
                         $stmt->bindParam(':nazwa_uzytkownika', $this->nazwa_uzytkownika);
                         $stmt->bindParam(':password', $this->password);
         
