@@ -22,13 +22,13 @@ const UserForm = ({create, handleStatusClick, history}) => {
         fetch(url)
             .then(res => res.json())
             .then(res => {
-                res.password === pass ? history.push(`/user/${username}`) : console.log('wrong pass') // wrong pass ? pop up
+                res.password === pass ? history.push(`/user/${username}`) : setDisable(true)
             })
     };
 
     const userCreate = (user,pass) => {        
         fetch((apiUserURL+'create.php'), userPost(user,pass))
-            .then(res => res.status)
+            .then(res => res.status).then(() => history.push(`/user/${username}`))
     };
 
 
@@ -44,12 +44,14 @@ const UserForm = ({create, handleStatusClick, history}) => {
                     name='username'
                     placeholder='User'/>
                 <input 
-                    className='input-userLogin'
+                    className={`input-userLogin ${disable}`}
                     type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    onBlur={() => setDisable(false)}
                     name='password'
                     placeholder='Password'/>
+                    {disable ? <p className='disable'>Wrong password</p> : null}
                 {create ? <input
                             className={`input-userLogin ${disable}`}
                             type='password'
@@ -59,7 +61,7 @@ const UserForm = ({create, handleStatusClick, history}) => {
                             placeholder='Repeat password'
                             onBlur={() => setDisable(password !== passCheck)}
                             /> : null}
-                {disable ? <p className='disable'>Passwords do not match</p> : null}
+                {disable && create ? <p className='disable'>Passwords do not match</p> : null}
                 <div>
                     <input 
                         className='button-userLogin'

@@ -23,7 +23,7 @@
 .panel {
     display: flex;
     margin: 15px;
-    height: 300px;
+    height: 290px;
 }
 
 .notes-list {
@@ -32,6 +32,11 @@
     flex-direction: column;
     width: 300px;
     overflow: auto;
+    border-radius: 4px;
+}
+
+.notes-empty {
+    margin: 100px 50px;
     border-radius: 4px;
 }
 
