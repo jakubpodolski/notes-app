@@ -4,7 +4,6 @@ import './NotesList.css'
 
 const NotesList = ({note, handleNoteClick, handleNoteDel}) => {
     const {id_notatki, tytul_notatki, data_stworzenia, kategoria} = note
-    console.log(kategoria)
     return (
         <div className='notes-list-wrapper'>
             <button className={`${kategoria} category`}/>
@@ -24,11 +23,3 @@ NotesList.propTypes = {
     handleNoteClick: PropTypes.func.isRequired,
     handleNoteDel: PropTypes.func.isRequired,
 };
-
-/* 
-normal - no style
-imporant - red 
-private - blue
-life - green 
-work - black
-*/

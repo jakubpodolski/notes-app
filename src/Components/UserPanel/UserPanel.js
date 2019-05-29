@@ -38,7 +38,6 @@ const UserPanel = ({ match, history }) => {
                             .then(res => setNotes(res ))
                             .then(() => fetch(apiCategoriesURL))
                                 .then(res => res.json()).then(res => setStyle(res))
-        console.log('DUPA!')
     }, [])
 
     const handleNoteClick = (id) => {
