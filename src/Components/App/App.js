@@ -15,7 +15,7 @@ const App = () => {
       <Switch>
         <Route
             exact path='/'
-            render={props => <UserForm
+            render={props => <UserForm {...props}
                                 create={create}
                                 handleStatusClick={handleStatusClick}/>} />
         <Route path='/user/:username' component={UserPanel}/>
