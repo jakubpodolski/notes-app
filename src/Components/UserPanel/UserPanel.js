@@ -75,14 +75,18 @@ const UserPanel = ({ match, history }) => {
             </div>
             <div className='panel'>
                 <div className='notes-list'>
-                    {notes ? notes.map((note) => (
+                    {
+                    notes.length ? notes.map((note) => (
                         <NotesList
                             key={note.id_notatki}
                             note={note}
                             handleNoteClick={handleNoteClick}
                             handleNoteDel={handleNoteDel}
-                        />
-                    )) : <p>Your notes</p>}
+                        /> )) : 
+                        <div className='notes-empty'>
+                            <p>Your notes will be here</p>
+                        </div>
+                    }
                 </div>
                 <div className='note-wrapper'>
                     <form className='note-form' onSubmit={(e) => handleNoteSave(e)} autoComplete="off">
@@ -109,10 +113,10 @@ const UserPanel = ({ match, history }) => {
                             type='submit'
                             name='create'
                             disabled={disableTitle||disableContent}/>
-                    </form>
-                    <button className='user-logOut' onClick={() => {setTitle(''); setContent(''); setNoteID(0)}}>
+                    <button className='user-logOut' onClick={(e) => {setTitle(''); setContent(''); setNoteID(0); e.preventDefault()}}>
                         New note
                     </button>
+                    </form>
                 </div>
                 <div style={{ width:'300px' }}/>
             </div>
