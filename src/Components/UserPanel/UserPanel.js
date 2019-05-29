@@ -7,7 +7,7 @@ import {
     noteSave,
     noteDelete
 } from '../../Helper'
-import NotesList from '../NotesList/NotesList.js'
+import NotesList from '../NotesList/NotesList'
 import Categories from '../Categories/Categories'
 
 import './UserPanel.css'

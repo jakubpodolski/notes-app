@@ -10,13 +10,12 @@ const App = () => {
   const handleStatusClick = () => {
     setCreate(!create)
   }
-  
   return (
     <div className="App">
       <Switch>
         <Route
             exact path='/'
-            render={props => <UserForm {...props}
+            render={props => <UserForm
                                 create={create}
                                 handleStatusClick={handleStatusClick}/>} />
         <Route path='/user/:username' component={UserPanel}/>

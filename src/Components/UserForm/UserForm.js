@@ -50,7 +50,7 @@ const UserForm = ({create, handleStatusClick, history}) => {
                     onBlur={() => setDisable(false)}
                     name='password'
                     placeholder='Password'/>
-                    {disable ? <p className='disable'>Wrong password</p> : null}
+                {disable ? <p className='disable'>Wrong password</p> : null}
                 {create ? <input
                             className={`input-userLogin ${disable}`}
                             type='password'
@@ -67,7 +67,6 @@ const UserForm = ({create, handleStatusClick, history}) => {
                         type='submit'
                         value={ create ? 'Create' : 'Log in'}
                         disabled={disable}
-                        onClick={() => 'Create_user_Function'}
                     />
                     <button 
                         type='button'
