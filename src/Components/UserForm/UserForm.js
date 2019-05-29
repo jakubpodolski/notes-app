@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import md5 from 'js-md5';
 import { apiUserURL, userPost } from '../../Helper';
 import './UserForm.css'
@@ -84,11 +83,3 @@ const UserForm = ({create, handleStatusClick, history}) => {
 }
 
 export default UserForm
-
-UserForm.propTypes = { 
-    create: PropTypes.bool.isRequired,
-    handleStatusClick: PropTypes.func.isRequired,
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-      }).isRequired,
-}

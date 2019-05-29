@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './NotesList.css'
 
 const NotesList = ({note, handleNoteClick, handleNoteDel}) => {
@@ -17,9 +16,3 @@ const NotesList = ({note, handleNoteClick, handleNoteDel}) => {
 };
 
 export default NotesList;
-
-NotesList.propTypes = {
-    note: PropTypes.object.isRequired,
-    handleNoteClick: PropTypes.func.isRequired,
-    handleNoteDel: PropTypes.func.isRequired,
-};

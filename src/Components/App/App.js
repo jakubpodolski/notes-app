@@ -5,7 +5,6 @@ import UserForm from '../UserForm/UserForm';
 import UserPanel from '../UserPanel/UserPanel'
 
 const App = () => {
-  //const [loading, setLoading] = useState(false);
   const [create, setCreate] = useState(false)
 
   const handleStatusClick = () => {

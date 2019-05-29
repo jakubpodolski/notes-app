@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import PropTypes from 'prop-types';
 import {
     apiNoteURL,
     apiUserURL,
@@ -125,14 +124,3 @@ const UserPanel = ({ match, history }) => {
 }
 
 export default UserPanel;
-
-UserPanel.propTypes = { 
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
-    match: PropTypes.shape({
-        params: PropTypes.shape({
-            username: PropTypes.string.isRequired
-        })
-    }),
-}
